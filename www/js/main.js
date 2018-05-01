@@ -24,14 +24,16 @@ function setup() {
         alert(err.message);
     });
 
-    StatusBar.overlaysWebView(false);
-    statusBarVisible = StatusBar.isVisible;
+    // StatusBar.overlaysWebView(false);
+    // StatusBar.backgroundColorByHexString("#000");
+    // statusBarVisible = StatusBar.isVisible;
+    StatusBar.hide();
 
     //set onclick for closing barcode fullscreen image
     $("#barcodeviewimage").click(function(){
         setNormalBrightness();
         if(statusBarVisible){
-            StatusBar.show();
+            // StatusBar.show();
         }
         window.history.back();
 
