@@ -24,7 +24,7 @@ function setup() {
         alert(err.message);
     });
 
-    StatusBar.overlaysWebView(true);
+    StatusBar.overlaysWebView(false);
     // StatusBar.backgroundColorByHexString("#000");
     statusBarVisible = StatusBar.isVisible;
     // StatusBar.hide();
