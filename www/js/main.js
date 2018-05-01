@@ -24,7 +24,7 @@ function setup() {
         alert(err.message);
     });
 
-
+    StatusBar.overlaysWebView(false);
     statusBarVisible = StatusBar.isVisible;
 
     //set onclick for closing barcode fullscreen image
