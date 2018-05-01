@@ -40,8 +40,8 @@ function setup() {
     });
     $("body").on("swiperight",function(e){
         if (e.swipestart.coords[0] < 50) {
-            alert("test");
-            $.mobile.navigate.goBack();
+            // alert("test");
+            $.mobile.navigate("#home")
         }
     });
 }
