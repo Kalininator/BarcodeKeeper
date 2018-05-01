@@ -113,6 +113,20 @@ function loadDataset(){
 
 function submitAddCodeForm(){
     alert("submit");
+    var name = $("#addCodeForm-name").val();
+    var obj = {
+        code:$("#addCodeForm-data").val(),
+        type:$("#addCodeForm-type").val()
+    };
+    setCode(name,obj,function(){
+        //Success
+        alert("Code Added");
+        loadDataset();
+        $.mobile.navigate("#home");
+    },function(err){
+        //Fail
+        alert(err.message);
+    });
 }
 
 function drawBarcodeIcon(image,data,format){
