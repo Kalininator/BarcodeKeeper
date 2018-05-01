@@ -112,7 +112,7 @@ function loadDataset(){
 }
 
 function submitAddCodeForm(){
-    //alert("submit");
+    alert("submit");
 }
 
 function drawBarcodeIcon(image,data,format){
