@@ -1,60 +1,82 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
-    <!-- Good default declaration:
-    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-        * Enable inline JS: add 'unsafe-inline' to default-src
-        * Enable eval(): add 'unsafe-eval' to default-src
-    * Create your own at http://cspisawesome.com
-    -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/custom.css">
+    <script type="text/javascript" src="cordova.js"></script>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
 
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <title>Hello World</title>
 </head>
-
 <body>
-    <div class="app">
-        <h1>PhoneGap</h1>
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
+
+<div data-role="page" id="home" data-theme="b">
+    <div data-role="content">
+        <ul data-role="listview"
+            id="codelist">
+            <!--Contents auto generated from stored barcodes-->
+        </ul>
+    </div>
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#home" data-icon="home">Home</a></li>
+                <li><a href="#addCode" data-icon="plus">Add Code</a></li>
+            </ul>
         </div>
     </div>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-        app.initialize();
-    </script>
-</body>
+</div>
 
+<div data-role="page" id="addCode" data-theme="b">
+    <div data-role="content">
+        <button id="scanButton" data-icon="camera" onclick="scanBarcode()">
+            Scan Barcode!
+        </button>
+        <form action="javascript:submitAddCodeForm();">
+
+            <label for="addCodeForm-name">Name:</label>
+            <input id="addCodeForm-name"
+                   type="text"
+                   name="name"
+                   required="required">
+            <label for="addCodeForm-data">Data:</label>
+            <input id="addCodeForm-data"
+                   type="text"
+                   name="data"
+                   required="required">
+            <!--<label for="addCodeForm-type" class="select">Barcode Type:</label>-->
+            <select name="addCodeForm-type" id="addCodeForm-type" data-native-menu="true">
+                <option value="" disabled selected>Barcode Type</option>
+                <option value="CODE128">CODE 128</option>
+                <option value="ean13">EAN 13</option>
+            </select>
+            <button type="submit" id="addCodeForm-addButton">Add Barcode</button>
+        </form>
+
+    </div>
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#home" data-icon="home">Home</a></li>
+                <li><a href="#addCode" data-icon="plus">Add Code</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="barcodeview" data-theme="b">
+    <div id="barcodeviewimage">
+        <!--used to display generated barcode-->
+    </div>
+</div>
+
+
+<script src="js/jquery-2.2.2.min.js"></script>
+<script src="js/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/jqm_defaults.js"></script>
+<script src="js/JsBarcode.all.min.js"></script>
+<script src="js/database.js"></script>
+<script src="js/main.js"></script>
+
+</body>
 </html>
