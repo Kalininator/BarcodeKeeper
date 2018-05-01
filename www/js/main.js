@@ -24,8 +24,6 @@ function setup() {
         alert(err.message);
     });
 
-    document.addEventListener("pause", pause, false);
-    document.addEventListener("resign", resign, false);
 
     statusBarVisible = StatusBar.isVisible;
 
@@ -38,13 +36,6 @@ function setup() {
         window.history.back();
 
     });
-}
-function resign(){
-    pause();
-}
-function pause(){
-    alert("pause");
-    setNormalBrightness();
 }
 
 
