@@ -38,9 +38,8 @@ function setup() {
         window.history.back();
 
     });
-    $("body").on("swiperight",function(e){
+    $("#home").on("swiperight",function(e){
         if (e.swipestart.coords[0] < 50) {
-            // alert("test");
             $.mobile.navigate("#home")
         }
     });
