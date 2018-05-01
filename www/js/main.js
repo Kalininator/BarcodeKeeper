@@ -40,7 +40,7 @@ function setup() {
     });
     $("body").on("swiperight",function(e){
         if (e.swipestart.coords[0] < 50) {
-            $.navigate.goBack();
+            $.mobile.navigate.goBack();
         }
     });
 }
