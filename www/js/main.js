@@ -112,7 +112,7 @@ function loadDataset(){
 }
 
 function submitAddCodeForm(){
-    alert("submit");
+    // alert("submit");
     var name = $("#addCodeForm-name").val();
     var obj = {
         code:$("#addCodeForm-data").val(),
@@ -120,9 +120,10 @@ function submitAddCodeForm(){
     };
     setCode(name,obj,function(){
         //Success
-        alert("Code Added");
+        // alert("Code Added");
         loadDataset();
         $.mobile.navigate("#home");
+        $("#addCodeForm").trigger("reset");
     },function(err){
         //Fail
         alert(err.message);
@@ -222,22 +223,8 @@ function scanBarcode(){
         function (result) {
             if(!result.cancelled){
                 if(result.format in codeDict){
-                    // var obj = {
-                    //     code:result.text,
-                    //     type:codeDict[result.format]
-                    // };
                     $("#addCodeForm-data").val(result.text);
                     $("#addCodeForm-type").val(codeDict[result.format]).selectmenu("refresh",true);
-                    // $("#addCodeForm-type");
-                    // setCode(result.text,obj,function(){
-                    //     //Success
-                    //     alert("Code Added");
-                    //     loadDataset();
-                    //     $.mobile.navigate("#home");
-                    // },function(err){
-                    //     //Fail
-                    //     alert(err.message);
-                    // });
                 }else{
                     navigator.notification.alert(
                         'This code format is not supported yet \n' + result.format,
