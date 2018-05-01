@@ -11,19 +11,15 @@
 <body>
 
 <div data-role="page" id="home" data-theme="b">
+    <div data-role="header" data-position="fixed">
+        <h1>Saved Barcodes</h1>
+        <a href="#addCode" data-icon="plus" class="ui-btn-right ui-icon-plus">Add Code</a>
+    </div>
     <div data-role="content">
         <ul data-role="listview"
             id="codelist">
             <!--Contents auto generated from stored barcodes-->
         </ul>
-    </div>
-    <div data-role="footer" data-position="fixed">
-        <div data-role="navbar">
-            <ul>
-                <li><a href="#home" data-icon="home">Home</a></li>
-                <li><a href="#addCode" data-icon="plus">Add Code</a></li>
-            </ul>
-        </div>
     </div>
 </div>
 
