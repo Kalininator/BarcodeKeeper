@@ -38,9 +38,12 @@ function setup() {
         window.history.back();
 
     });
-    $("#home").on("swiperight",function(e){
+    $("#addCode").on("swiperight",function(e){
         if (e.swipestart.coords[0] < 50) {
-            $.mobile.navigate("#home")
+            $.mobile.changePage("#home",{
+                transition: "slide",
+                reverse: true
+            });
         }
     });
 }
