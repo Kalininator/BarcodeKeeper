@@ -25,7 +25,7 @@ function setup() {
     });
 
     StatusBar.overlaysWebView(false);
-    StatusBar.backgroundColorByHexString("#000");
+    StatusBar.backgroundColorByHexString("#333333");
     statusBarVisible = StatusBar.isVisible;
     // StatusBar.hide();
 
@@ -69,7 +69,8 @@ function loadDataset(){
             //add code to <ul>
             codelist.append(text);
             //set onclick to view barcode
-            $(".barcodeitem").click(function(){
+            var barcodeitem = $(".barcodeitem");
+            barcodeitem.click(function(){
                 var $this = $(this);
                 if($this.data("executing")){
                     return;
@@ -85,7 +86,7 @@ function loadDataset(){
                     alert(err.message);
                 });
             });
-            $(".barcodeitem").on("swipeleft",function(){
+            barcodeitem.on("swipeleft",function(){
                 //try delete
                 var name = $(this).attr("reference");
                 navigator.notification.confirm("Delete " + name + "?", function(result){
