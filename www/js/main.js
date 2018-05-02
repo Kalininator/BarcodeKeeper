@@ -308,7 +308,7 @@ function initMap() {
             alert(place.geometry.location + "," + place.name);
             var dist = distanceBetween({
                 lat:place.geometry.location.lat(),
-                lon:place.geometry.lccation.lng()
+                lon:place.geometry.location.lng()
             },position);
             alert(dist);
             alert("test");
