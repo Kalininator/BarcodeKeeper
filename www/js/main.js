@@ -69,7 +69,7 @@ function loadDataset(){
             //add code to <ul>
             codelist.append(text);
             //set onclick to view barcode
-            var barcodeitem = $(".barcodeitem a").first();
+            var barcodeitem = $(".barcodeitem:first-child");
             barcodeitem.click(function(){
                 var $this = $(this);
                 if($this.parent().data("executing")){
