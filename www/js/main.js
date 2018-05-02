@@ -230,7 +230,7 @@ function showEditView(name,success,fail){
             margin:100
         });
         img.onload = function(){
-            $("#editviewimage").css("background-image","url('" + img.src + "')");
+            $("#editviewimage").setAttribute("src",img.src);
             $.mobile.navigate("#editview");
             success();
         }
