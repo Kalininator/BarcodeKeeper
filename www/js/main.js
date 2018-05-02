@@ -92,7 +92,7 @@ function loadDataset(){
             });
             alert(JSON.stringify(names));
             //Successfully acquired code list
-            for(var name in codes){//loop through each code
+            for(var name in names){//loop through each code
                 //get code by name
                 var code = codes[name]
                 //generate html
