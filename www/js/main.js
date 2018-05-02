@@ -65,7 +65,7 @@ function loadDataset(){
             //sort codes
             for(var name in codes){
                 code = codes[name];
-                if (code.locatioName){
+                if (code.locationName){
                     var dist = distanceBetween(location, {
                         lat:code.lat,
                         lon:code.lon
