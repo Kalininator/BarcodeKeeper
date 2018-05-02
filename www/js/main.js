@@ -239,9 +239,9 @@ function showEditView(name,success,fail){
         });
         img.onload = function(){
             $("#editviewtitle").text(name);
-            $("#editLocationName").text(code.locationName);
-            $("#editLocationLat").text(code.lat);
-            $("#editLocationLon").text(code.lon);
+            $("#editLocationName").val(code.locationName);
+            $("#editLocationLat").val(code.lat);
+            $("#editLocationLon").val(code.lon);
             $("#editviewimage").attr("src",img.src);
             $.mobile.navigate("#editview");
             success();
