@@ -36,12 +36,10 @@
     font-weight: bold;
 }
 
-#infowindow-content {
-    display: none;
-}
 
 #map #infowindow-content {
     display: inline;
+    color: black;
 }
 
 .pac-card {
