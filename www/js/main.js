@@ -88,6 +88,22 @@ function loadDataset(){
                         alert(err.message);
                     });
                 });
+                $listitem.children().eq(1).click(function(){
+                    var $this = $(this);
+                    if($this.parent().data("executing")){
+                        return;
+                    }
+                    $this.parent().data("executing",true);
+                    var name = $this.parent().attr("reference");
+                    showEditView(name,function(){
+                        //success
+                        $this.parent().removeData("executing");
+                    },function(err){
+                        //fail
+                        $this.parent().removeData("executing");
+                        alert(err.message);
+                    });
+                });
             });
             // barcodeitem.on("swipeleft",function(){
             //     //try delete
@@ -196,6 +212,26 @@ function showBarcodeView(name,success,fail){
             $("#barcodeviewimage").css("background-image","url('" + rotateImage(img).src + "')");
             $.mobile.navigate("#barcodeview");
             setFullBrightness();
+            success();
+        }
+    },function(err){
+        fail(err);
+    });
+}
+function showEditView(name,success,fail){
+    getCode(name,function(code) {
+        //Code Found
+        var img = new Image();
+        JsBarcode(img,code.code,{
+            format:code.type,
+            width: 8,
+            height: 400,
+            fontSize: 60,
+            margin:100
+        });
+        img.onload = function(){
+            $("#editviewimage").css("background-image","url('" + img.src + "')");
+            $.mobile.navigate("#editview");
             success();
         }
     },function(err){
