@@ -254,8 +254,6 @@ function initMap() {
     });
     var card = document.getElementById('pac-card');
     var input = document.getElementById('pac-input');
-    var types = document.getElementById('type-selector');
-    var strictBounds = document.getElementById('strict-bounds-selector');
 
     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
 
@@ -324,11 +322,6 @@ function initMap() {
     setupClickListener('changetype-establishment', ['establishment']);
     setupClickListener('changetype-geocode', ['geocode']);
 
-    document.getElementById('use-strict-bounds')
-        .addEventListener('click', function() {
-            console.log('Checkbox clicked! New state=' + this.checked);
-            autocomplete.setOptions({strictBounds: this.checked});
-        });
 }
 
 
