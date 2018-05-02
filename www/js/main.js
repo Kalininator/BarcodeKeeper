@@ -295,6 +295,7 @@ function initMap() {
     placesService = new google.maps.places.PlacesService(map);
     map.addListener('click',function(event){
         alert(event.latLng);
+        alert(event);
         if(event.placeId){
             // event.stop();
             placesService.getDetails({placeId: placeId}, function(place, status) {
