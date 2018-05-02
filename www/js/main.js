@@ -64,7 +64,7 @@ function loadDataset(){
             text += "<h1>" + name + "</h1>";
             text += "<p>Code: " + code.code + "</p>";
             text += "<p>Type: " + code.type + "</p>";
-            text += "</a>";
+            text += "</a><a href='#' data-icon='ui-icon-cog'></a>";
             text += "</li>";
             //add code to <ul>
             codelist.append(text);
