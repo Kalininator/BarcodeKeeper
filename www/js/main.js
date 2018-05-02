@@ -46,6 +46,14 @@ function setup() {
             });
         }
     });
+    $("#editview").on("swiperight",function(e){
+        if (e.swipestart.coords[0] < 50) {
+            $.mobile.changePage("#home",{
+                transition: "slide",
+                reverse: true
+            });
+        }
+    });
 }
 
 
