@@ -60,82 +60,103 @@ function setup() {
 function loadDataset(){
     var codelist = $("#codelist");
     codelist.empty();
-    codes = getAllCodes(function(codes){
-        //Successfully acquired code list
-        for(var name in codes){//loop through each code
-            //get code by name
-            code = codes[name];
-            //generate html
-            var text = "<li class='barcodeitem' reference='" + name + "'>";
-            text += "<a href='#'>";
-            text += "<img />";
-            text += "<h1>" + name + "</h1>";
-            text += "<p>Code: " + code.code + "</p>";
-            text += "<p>Type: " + code.type + "</p>";
-            text += "</a><a href='#' data-icon='gear'></a>";
-            text += "</li>";
-            //add code to <ul>
-            codelist.append(text);
-            //set onclick to view barcode
-            var barcodeitem = $(".barcodeitem");
-            barcodeitem.each(function(){
-                var $listitem = $(this);
-                $listitem.children().first().click(function(){
-                    var $this = $(this);
-                    if($this.parent().data("executing")){
-                        return;
-                    }
-                    $this.parent().data("executing",true);
-                    var name = $this.parent().attr("reference");
-                    showBarcodeView(name,function(){
-                        //success
-                        $this.parent().removeData("executing");
-                    },function(err){
-                        //fail
-                        $this.parent().removeData("executing");
-                        alert(err.message);
+    getCurrentLocation(function(location){
+        codes = getAllCodes(function(codes){
+            //sort codes
+            for(var name in codes){
+                code = codes[name];
+                if (code.locatioName){
+                    var dist = distanceBetween(location, {
+                        lat:code.lat,
+                        lon:code.lon
+                    });
+                    code.distance = dist;
+                }else{
+                    code.distance = Infinity;
+                }
+            }
+            //Successfully acquired code list
+            for(var name in codes){//loop through each code
+                //get code by name
+                code = codes[name];
+                //generate html
+                var text = "<li class='barcodeitem' reference='" + name + "'>";
+                text += "<a href='#'>";
+                text += "<img />";
+                text += "<h1>" + name + "</h1>";
+                text += "<p>Code: " + code.code + "</p>";
+                text += "<p>Type: " + code.type + "</p>";
+                text += "<p>Dist: " + code.distance + "</p>";
+                text += "</a><a href='#' data-icon='gear'></a>";
+                text += "</li>";
+                //add code to <ul>
+                codelist.append(text);
+                //set onclick to view barcode
+                var barcodeitem = $(".barcodeitem");
+                barcodeitem.each(function(){
+                    var $listitem = $(this);
+                    $listitem.children().first().click(function(){
+                        var $this = $(this);
+                        if($this.parent().data("executing")){
+                            return;
+                        }
+                        $this.parent().data("executing",true);
+                        var name = $this.parent().attr("reference");
+                        showBarcodeView(name,function(){
+                            //success
+                            $this.parent().removeData("executing");
+                        },function(err){
+                            //fail
+                            $this.parent().removeData("executing");
+                            alert(err.message);
+                        });
+                    });
+                    $listitem.children().eq(1).click(function(){
+                        var $this = $(this);
+                        if($this.parent().data("executing")){
+                            return;
+                        }
+                        $this.parent().data("executing",true);
+                        var name = $this.parent().attr("reference");
+                        showEditView(name,function(){
+                            //success
+                            $this.parent().removeData("executing");
+                        },function(err){
+                            //fail
+                            $this.parent().removeData("executing");
+                            alert(err.message);
+                        });
                     });
                 });
-                $listitem.children().eq(1).click(function(){
-                    var $this = $(this);
-                    if($this.parent().data("executing")){
-                        return;
-                    }
-                    $this.parent().data("executing",true);
-                    var name = $this.parent().attr("reference");
-                    showEditView(name,function(){
-                        //success
-                        $this.parent().removeData("executing");
-                    },function(err){
-                        //fail
-                        $this.parent().removeData("executing");
-                        alert(err.message);
-                    });
-                });
-            });
-            // barcodeitem.on("swipeleft",function(){
-            //     //try delete
-            //     var name = $(this).attr("reference");
-            //     navigator.notification.confirm("Delete " + name + "?", function(result){
-            //         if(result === 1){
-            //             removeCode(name,function(){
-            //                 //successfully removed
-            //                 loadDataset();
-            //             },function(){
-            //                 //failed to remove
-            //                 alert("failed to remove");
-            //             })
-            //         }
-            //     },"Delete","Yes,No");
-            //
-            // });
-            //draw icon for code
-            drawBarcodeIcon($(".barcodeitem[reference='" + name + "'] img:first"),code.code,code.type);
-        }
+                // barcodeitem.on("swipeleft",function(){
+                //     //try delete
+                //     var name = $(this).attr("reference");
+                //     navigator.notification.confirm("Delete " + name + "?", function(result){
+                //         if(result === 1){
+                //             removeCode(name,function(){
+                //                 //successfully removed
+                //                 loadDataset();
+                //             },function(){
+                //                 //failed to remove
+                //                 alert("failed to remove");
+                //             })
+                //         }
+                //     },"Delete","Yes,No");
+                //
+                // });
+                //draw icon for code
+                drawBarcodeIcon($(".barcodeitem[reference='" + name + "'] img:first"),code.code,code.type);
+            }
+        },function(err){
+            alert(err.message);
+        });
+        codelist.listview("refresh");
     },function(err){
-        alert(err.message);
+
     });
-    codelist.listview("refresh");
+
+
+
 }
 
 function submitAddCodeForm(){
