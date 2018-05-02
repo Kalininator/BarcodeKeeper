@@ -63,8 +63,8 @@ function loadDataset(){
     getCurrentLocation(function(location){
         codes = getAllCodes(function(codes){
             //add dists to codes
-            for(var name in codes){
-                code = codes[name];
+            for(var n in codes){
+                code = codes[n];
                 if (code.locationName){
                     var dist = distanceBetween(location, {
                         lat:code.lat,
@@ -94,7 +94,7 @@ function loadDataset(){
             //Successfully acquired code list
             for(var name in names){//loop through each code
                 //get code by name
-                var code = codes[name]
+                var code = codes[name];
                 //generate html
                 var text = "<li class='barcodeitem' reference='" + name + "'>";
                 text += "<a href='#'>";
