@@ -305,13 +305,12 @@ function initMap() {
                 map.setCenter(place.geometry.location);
                 map.setZoom(17);
             }
-            alert(place.geometry.location + "," + place.name);
-            var dist = distanceBetween({
-                lat:place.geometry.location.lat(),
-                lon:place.geometry.location.lng()
-            },position);
-            alert(dist);
-            alert("test");
+            // alert(place.geometry.location + "," + place.name);
+            // var dist = distanceBetween({
+            //     lat:place.geometry.location.lat(),
+            //     lon:place.geometry.location.lng()
+            // },position);
+            // alert(dist);
             marker.setPosition(place.geometry.location);
             marker.setVisible(true);
             var address = '';
