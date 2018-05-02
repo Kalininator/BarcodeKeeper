@@ -76,10 +76,11 @@ function loadDataset(){
                 }
             }
             //sort codes
+            alert(JSON.stringify(codes));
             codes.sort(function(a,b){
                 return a.distance - b.distance;
             });
-            alert(codes.size());
+            alert(JSON.stringify(codes));
             //Successfully acquired code list
             for(var name in codes){//loop through each code
                 //get code by name
