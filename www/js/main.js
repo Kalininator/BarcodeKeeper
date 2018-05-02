@@ -63,6 +63,7 @@ function loadDataset(){
     getCurrentLocation(function(location){
         codes = getAllCodes(function(codes){
             //add dists to codes
+            var codearr = [];
             for(var name in codes){
                 code = codes[name];
                 if (code.locationName){
@@ -74,10 +75,12 @@ function loadDataset(){
                 }else{
                     code.distance = Infinity;
                 }
+                code.name = name;
+                codearr.append(code);
             }
             //sort codes
-            alert(JSON.stringify(codes));
-            codes.sort(function(a,b){
+
+            codearr.sort(function(a,b){
                 if(parseInt(a.distance) < parseInt(b.distance)){
                     return -1;
                 }else {
@@ -85,14 +88,14 @@ function loadDataset(){
                 }
             });
             //Successfully acquired code list
-            for(var name in codes){//loop through each code
+            for(var code in codearr){//loop through each code
                 //get code by name
-                code = codes[name];
+
                 //generate html
-                var text = "<li class='barcodeitem' reference='" + name + "'>";
+                var text = "<li class='barcodeitem' reference='" + code.name + "'>";
                 text += "<a href='#'>";
                 text += "<img />";
-                text += "<h1>" + name + "</h1>";
+                text += "<h1>" + code.name + "</h1>";
                 text += "<p>Code: " + code.code + "</p>";
                 text += "<p>Type: " + code.type + "</p>";
                 text += "<p>Dist: " + code.distance + "</p>";
@@ -111,7 +114,7 @@ function loadDataset(){
                         }
                         $this.parent().data("executing",true);
                         var name = $this.parent().attr("reference");
-                        showBarcodeView(name,function(){
+                        showBarcodeView(code.name,function(){
                             //success
                             $this.parent().removeData("executing");
                         },function(err){
@@ -127,7 +130,7 @@ function loadDataset(){
                         }
                         $this.parent().data("executing",true);
                         var name = $this.parent().attr("reference");
-                        showEditView(name,function(){
+                        showEditView(code.name,function(){
                             //success
                             $this.parent().removeData("executing");
                         },function(err){
@@ -154,7 +157,7 @@ function loadDataset(){
                 //
                 // });
                 //draw icon for code
-                drawBarcodeIcon($(".barcodeitem[reference='" + name + "'] img:first"),code.code,code.type);
+                drawBarcodeIcon($(".barcodeitem[reference='" + code.name + "'] img:first"),code.code,code.type);
             }
         },function(err){
             alert(err.message);
