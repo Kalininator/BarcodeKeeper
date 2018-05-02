@@ -296,7 +296,7 @@ function initMap() {
     map.addListener('click',function(event){
         alert(event.latLng);
         if(event.placeId){
-            event.stop();
+            // event.stop();
             placesService.getDetails({placeId: placeId}, function(place, status) {
                 if (status === 'OK') {
                     // me.infowindow.close();
