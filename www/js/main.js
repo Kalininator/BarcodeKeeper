@@ -69,20 +69,20 @@ function loadDataset(){
             //add code to <ul>
             codelist.append(text);
             //set onclick to view barcode
-            var barcodeitem = $(".barcodeitem");
+            var barcodeitem = $(".barcodeitem a").first();
             barcodeitem.click(function(){
                 var $this = $(this);
-                if($this.data("executing")){
+                if($this.parent().data("executing")){
                     return;
                 }
-                $this.data("executing",true);
-                var name = $this.attr("reference");
+                $this.parent().data("executing",true);
+                var name = $this.parent().attr("reference");
                 showBarcodeView(name,function(){
                     //success
-                    $this.removeData("executing");
+                    $this.parent().removeData("executing");
                 },function(err){
                     //fail
-                    $this.removeData("executing");
+                    $this.parent().removeData("executing");
                     alert(err.message);
                 });
             });
