@@ -306,10 +306,12 @@ function initMap() {
                 map.setZoom(17);
             }
             alert(place.geometry.location + "," + place.name);
-            alert("distance: " + distanceBetween({
+            var dist = distanceBetween({
                 lat:place.geometry.location.lat(),
                 lon:place.geometry.lccation.lng()
-            },position));
+            },position);
+            alert(dist);
+            alert("test");
             marker.setPosition(place.geometry.location);
             marker.setVisible(true);
             var address = '';
