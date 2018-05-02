@@ -292,29 +292,29 @@ function initMap() {
         infowindowContent.children['place-address'].textContent = address;
         infowindow.open(map, marker);
     });
-    placesService = new google.maps.places.PlacesService(map);
-    map.addListener('click',function(event){
-        alert(event.latLng);
-        alert(event);
-        if(event.placeId){
-            // event.stop();
-            placesService.getDetails({placeId: placeId}, function(place, status) {
-                alert(status);
-                if (status === 'OK') {
-                    // me.infowindow.close();
-                    // me.infowindow.setPosition(place.geometry.location);
-                    // me.infowindowContent.children['place-icon'].src = place.icon;
-                    // me.infowindowContent.children['place-name'].textContent = place.name;
-                    // me.infowindowContent.children['place-id'].textContent = place.place_id;
-                    // me.infowindowContent.children['place-address'].textContent =
-                    //     place.formatted_address;
-                    // me.infowindow.open(me.map);
-                    alert(place.name);
-                }
-            });
-
-        }
-    });
+    // placesService = new google.maps.places.PlacesService(map);
+    // map.addListener('click',function(event){
+    //     alert(event.latLng);
+    //     alert(event);
+    //     if(event.placeId){
+    //         // event.stop();
+    //         placesService.getDetails({placeId: placeId}, function(place, status) {
+    //             alert(status);
+    //             if (status === 'OK') {
+    //                 // me.infowindow.close();
+    //                 // me.infowindow.setPosition(place.geometry.location);
+    //                 // me.infowindowContent.children['place-icon'].src = place.icon;
+    //                 // me.infowindowContent.children['place-name'].textContent = place.name;
+    //                 // me.infowindowContent.children['place-id'].textContent = place.place_id;
+    //                 // me.infowindowContent.children['place-address'].textContent =
+    //                 //     place.formatted_address;
+    //                 // me.infowindow.open(me.map);
+    //                 alert(place.name);
+    //             }
+    //         });
+    //
+    //     }
+    // });
 }
 
 
