@@ -69,10 +69,25 @@
 <div data-role="page" id="editview" data-theme="b">
     <div data-role="header" data-position="fixed">
         <a href="#home" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-carat-l">Back</a>
-        <h1>Edit</h1>
+        <h1 id="editviewtitle">Edit</h1>
     </div>
     <div data-role="content">
         <img id="editviewimage" src="#"><!--Placeholder for barcode-->
+        <label for="addCodeForm-name">Name:</label>
+        <input id="editLocationName"
+               type="text"
+               name="name"
+               required="required">
+        <label for="addCodeForm-data">Lat:</label>
+        <input id="editLocationLat"
+               type="number"
+               name="lat"
+               required="required">
+        <label for="addCodeForm-data">Lon:</label>
+        <input id="editLocationLon"
+               type="number"
+               name="lon"
+               required="required">
         <div id="pac-container">
             <input id="pac-input" type="text"
                    placeholder="Enter a location">

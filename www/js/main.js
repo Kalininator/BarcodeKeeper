@@ -238,6 +238,7 @@ function showEditView(name,success,fail){
             margin:100
         });
         img.onload = function(){
+            $("#editviewtitle").val(name);
             $("#editviewimage").attr("src",img.src);
             $.mobile.navigate("#editview");
             success();
