@@ -79,7 +79,7 @@ function loadDataset(){
                 codearr.append(code);
             }
             //sort codes
-
+            alert(JSON.stringify(codearr));
             codearr.sort(function(a,b){
                 if(parseInt(a.distance) < parseInt(b.distance)){
                     return -1;
