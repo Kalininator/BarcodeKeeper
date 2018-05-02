@@ -76,16 +76,16 @@ function loadDataset(){
                 }
 
             }
-            alert(JSON.stringify(codes));
+            // alert(JSON.stringify(codes));
             var names = Object.keys(codes);
             names.sort(function (a, b) {
                 return codes[a].distance - codes[b].distance;
             });
-            alert(JSON.stringify(names));
+            // alert(JSON.stringify(names));
             //Successfully acquired code list
             for(var i = 0; i < names.length; i ++){//loop through each code
                 //get code by name
-                alert(names[i]);
+                // alert(names[i]);
                 var name = names[i];
                 var code = codes[name];
                 //generate html
