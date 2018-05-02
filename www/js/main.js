@@ -247,14 +247,25 @@ function showEditView(name,success,fail){
     });
 }
 
-function initMap(){
+function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -33.8688, lng: 151.2195},
         zoom: 13
     });
-    var input = $("#pac-input");
+    var card = document.getElementById('pac-card');
+    var input = document.getElementById('pac-input');
+    var types = document.getElementById('type-selector');
+    var strictBounds = document.getElementById('strict-bounds-selector');
+
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+
     var autocomplete = new google.maps.places.Autocomplete(input);
+
+    // Bind the map's bounds (viewport) property to the autocomplete object,
+    // so that the autocomplete requests use the current map bounds for the
+    // bounds option in the request.
     autocomplete.bindTo('bounds', map);
+
     var infowindow = new google.maps.InfoWindow();
     var infowindowContent = document.getElementById('infowindow-content');
     infowindow.setContent(infowindowContent);
@@ -262,16 +273,19 @@ function initMap(){
         map: map,
         anchorPoint: new google.maps.Point(0, -29)
     });
-    autocomplete.addListener('place_changed',function(){
+
+    autocomplete.addListener('place_changed', function() {
         infowindow.close();
         marker.setVisible(false);
         var place = autocomplete.getPlace();
         if (!place.geometry) {
             // User entered the name of a Place that was not suggested and
             // pressed the Enter key, or the Place Details request failed.
-            alert("No details available for input: '" + place.name + "'");
+            window.alert("No details available for input: '" + place.name + "'");
             return;
         }
+
+        // If the place has a geometry, then present it on a map.
         if (place.geometry.viewport) {
             map.fitBounds(place.geometry.viewport);
         } else {
@@ -280,6 +294,7 @@ function initMap(){
         }
         marker.setPosition(place.geometry.location);
         marker.setVisible(true);
+
         var address = '';
         if (place.address_components) {
             address = [
@@ -294,7 +309,28 @@ function initMap(){
         infowindowContent.children['place-address'].textContent = address;
         infowindow.open(map, marker);
     });
+
+    // Sets a listener on a radio button to change the filter type on Places
+    // Autocomplete.
+    function setupClickListener(id, types) {
+        var radioButton = document.getElementById(id);
+        radioButton.addEventListener('click', function() {
+            autocomplete.setTypes(types);
+        });
+    }
+
+    setupClickListener('changetype-all', []);
+    setupClickListener('changetype-address', ['address']);
+    setupClickListener('changetype-establishment', ['establishment']);
+    setupClickListener('changetype-geocode', ['geocode']);
+
+    document.getElementById('use-strict-bounds')
+        .addEventListener('click', function() {
+            console.log('Checkbox clicked! New state=' + this.checked);
+            autocomplete.setOptions({strictBounds: this.checked});
+        });
 }
+
 
 function rotateImage(img){
     var canvas  = document.createElement("canvas");
