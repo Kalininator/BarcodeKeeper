@@ -260,23 +260,30 @@ function showBarcodeView(name,success,fail){
 function showEditView(name,success,fail){
     getCode(name,function(code) {
         //Code Found
-        var img = new Image();
-        JsBarcode(img,code.code,{
-            format:code.type,
-            width: 8,
-            height: 400,
-            fontSize: 60,
-            margin:100
-        });
-        img.onload = function(){
-            $("#editviewtitle").text(name);
-            $("#editLocationName").val(code.locationName);
-            $("#editLocationLat").val(code.lat);
-            $("#editLocationLon").val(code.lon);
-            $("#editviewimage").attr("src",img.src);
-            $.mobile.navigate("#editview");
-            success();
-        }
+        $("#editviewtitle").text(name);
+        $("#editLocationName").val(code.locationName);
+        $("#editLocationLat").val(code.lat);
+        $("#editLocationLon").val(code.lon);
+        $.mobile.navigate("#editview");
+        success();
+
+        // var img = new Image();
+        // JsBarcode(img,code.code,{
+        //     format:code.type,
+        //     width: 8,
+        //     height: 400,
+        //     fontSize: 60,
+        //     margin:100
+        // });
+        // img.onload = function(){
+        //     $("#editviewtitle").text(name);
+        //     $("#editLocationName").val(code.locationName);
+        //     $("#editLocationLat").val(code.lat);
+        //     $("#editLocationLon").val(code.lon);
+        //     $("#editviewimage").attr("src",img.src);
+        //     $.mobile.navigate("#editview");
+        //     success();
+        // }
     },function(err){
         fail(err);
     });
