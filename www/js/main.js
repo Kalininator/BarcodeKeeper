@@ -79,6 +79,7 @@ function loadDataset(){
             codes.sort(function(a,b){
                 return a.distance - b.distance;
             });
+            alert(codes.size());
             //Successfully acquired code list
             for(var name in codes){//loop through each code
                 //get code by name
