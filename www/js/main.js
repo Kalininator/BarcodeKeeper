@@ -80,13 +80,13 @@ function loadDataset(){
             }
             //sort codes
             alert(JSON.stringify(codearr));
-            codearr.sort(function(a,b){
-                if(parseInt(a.distance) < parseInt(b.distance)){
-                    return -1;
-                }else {
-                    return 1;
-                }
-            });
+            // codearr.sort(function(a,b){
+            //     if(parseInt(a.distance) < parseInt(b.distance)){
+            //         return -1;
+            //     }else {
+            //         return 1;
+            //     }
+            // });
             //Successfully acquired code list
             for(var code in codearr){//loop through each code
                 //get code by name
