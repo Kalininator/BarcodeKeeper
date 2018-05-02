@@ -17,3 +17,18 @@
     bottom: 0;
     margin: auto;
 }
+
+#map {
+    height: 400px;
+}
+#infowindow-content .title {
+    font-weight: bold;
+}
+
+#infowindow-content {
+    display: none;
+}
+
+#map #infowindow-content {
+    display: inline;
+}

@@ -70,9 +70,21 @@
     <div data-role="header" data-position="fixed">
         <a href="#home" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-carat-l">Back</a>
         <h1>Edit</h1>
-        <!--<button class="ui-btn-right ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-check">Save</button>-->
     </div>
-    <img id="editviewimage" src="#">
+    <div data-role="content">
+        <img id="editviewimage" src="#"><!--Placeholder for barcode-->
+        <input id="pac-input" type="text"
+               placeholder="Enter a location">
+        <div id="map"></div>
+        <div id="infowindow-content">
+            <img src="" width="16" height="16" id="place-icon">
+            <span id="place-name"  class="title"></span><br>
+            <span id="place-address"></span>
+        </div>
+
+    </div>
+
+
 </div>
 
 <div data-role="page" id="barcodeview" data-theme="b">
@@ -88,6 +100,7 @@
 <script src="js/JsBarcode.all.min.js"></script>
 <script src="js/database.js"></script>
 <script src="js/main.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSs6wf_hynlk7flK4kuqtmE80woNX72TU&libraries=places&callback=initMap" async defer></script>
 
 </body>
 </html>
