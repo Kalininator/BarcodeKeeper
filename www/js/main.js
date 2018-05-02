@@ -179,6 +179,7 @@ function setNormalBrightness(){
 }
 
 function showBarcodeView(name,success,fail){
+    alert(name);
     getCode(name,function(code) {
         //Code Found
         var img = new Image();
