@@ -230,7 +230,8 @@ function showEditView(name,success,fail){
             margin:100
         });
         img.onload = function(){
-            $("#editviewimage").setAttribute("src",img.src);
+            alert(img.src);
+            $("#editviewimage").attr("src",img.src);
             $.mobile.navigate("#editview");
             success();
         }
