@@ -298,6 +298,7 @@ function initMap() {
         if(event.placeId){
             // event.stop();
             placesService.getDetails({placeId: placeId}, function(place, status) {
+                alert(status);
                 if (status === 'OK') {
                     // me.infowindow.close();
                     // me.infowindow.setPosition(place.geometry.location);
