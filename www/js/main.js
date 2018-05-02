@@ -72,6 +72,7 @@ function loadDataset(){
             var barcodeitem = $(".barcodeitem:first-child");
             barcodeitem.click(function(){
                 var $this = $(this);
+                alert($this.parent.attr("reference"));
                 if($this.parent().data("executing")){
                     return;
                 }
@@ -86,22 +87,22 @@ function loadDataset(){
                     alert(err.message);
                 });
             });
-            barcodeitem.on("swipeleft",function(){
-                //try delete
-                var name = $(this).attr("reference");
-                navigator.notification.confirm("Delete " + name + "?", function(result){
-                    if(result === 1){
-                        removeCode(name,function(){
-                            //successfully removed
-                            loadDataset();
-                        },function(){
-                            //failed to remove
-                            alert("failed to remove");
-                        })
-                    }
-                },"Delete","Yes,No");
-
-            });
+            // barcodeitem.on("swipeleft",function(){
+            //     //try delete
+            //     var name = $(this).attr("reference");
+            //     navigator.notification.confirm("Delete " + name + "?", function(result){
+            //         if(result === 1){
+            //             removeCode(name,function(){
+            //                 //successfully removed
+            //                 loadDataset();
+            //             },function(){
+            //                 //failed to remove
+            //                 alert("failed to remove");
+            //             })
+            //         }
+            //     },"Delete","Yes,No");
+            //
+            // });
             //draw icon for code
             drawBarcodeIcon($(".barcodeitem[reference='" + name + "'] img:first"),code.code,code.type);
         }
