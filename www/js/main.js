@@ -35,7 +35,7 @@ function setup() {
         if(statusBarVisible){
             StatusBar.show();
         }
-        window.history.back();
+        $.mobile.changePage("#home");
 
     });
     $("#addCode").on("swiperight",function(e){
@@ -104,6 +104,7 @@ function loadDataset(){
                 var barcodeitem = $(".barcodeitem");
                 barcodeitem.each(function(){
                     var $listitem = $(this);
+                    $listitem.children().first().off('click');
                     $listitem.children().first().click(function(){
                         var $this = $(this);
                         if($this.parent().data("executing")){
@@ -120,6 +121,7 @@ function loadDataset(){
                             alert(err.message);
                         });
                     });
+                    $listitem.children().eq(1).off('click');
                     $listitem.children().eq(1).click(function(){
                         var $this = $(this);
                         if($this.parent().data("executing")){
