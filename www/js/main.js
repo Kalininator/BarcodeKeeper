@@ -70,22 +70,42 @@ function loadDataset(){
             codelist.append(text);
             //set onclick to view barcode
             var barcodeitem = $(".barcodeitem");
-            barcodeitem.children().first().click(function(){
-                var $this = $(this);
-                if($this.parent().data("executing")){
-                    return;
-                }
-                $this.parent().data("executing",true);
-                var name = $this.parent().attr("reference");
-                showBarcodeView(name,function(){
-                    //success
-                    $this.parent().removeData("executing");
-                },function(err){
-                    //fail
-                    $this.parent().removeData("executing");
-                    alert(err.message);
-                });
+            barcodeitem.each(function(){
+                var $listitem = $(this);
+                $listitem.children().first().click(function(){
+                    var $this = $(this);
+                    if($this.parent().data("executing")){
+                        return;
+                    }
+                    $this.parent().data("executing",true);
+                    var name = $this.parent().attr("reference");
+                    showBarcodeView(name,function(){
+                        //success
+                        $this.parent().removeData("executing");
+                    },function(err){
+                        //fail
+                        $this.parent().removeData("executing");
+                        alert(err.message);
+                    });
+                })
             });
+
+            // barcodeitem.click(function(){
+            //     var $this = $(this);
+            //     if($this.parent().data("executing")){
+            //         return;
+            //     }
+            //     $this.parent().data("executing",true);
+            //     var name = $this.parent().attr("reference");
+            //     showBarcodeView(name,function(){
+            //         //success
+            //         $this.parent().removeData("executing");
+            //     },function(err){
+            //         //fail
+            //         $this.parent().removeData("executing");
+            //         alert(err.message);
+            //     });
+            // });
             // barcodeitem.on("swipeleft",function(){
             //     //try delete
             //     var name = $(this).attr("reference");
