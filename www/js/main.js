@@ -64,7 +64,7 @@ function loadDataset(){
             text += "<h1>" + name + "</h1>";
             text += "<p>Code: " + code.code + "</p>";
             text += "<p>Type: " + code.type + "</p>";
-            text += "</a><a href='#' data-icon='ui-icon-cog'></a>";
+            text += "</a><a href='#' data-icon='ui-icon-gear'></a>";
             text += "</li>";
             //add code to <ul>
             codelist.append(text);
@@ -89,23 +89,6 @@ function loadDataset(){
                     });
                 })
             });
-
-            // barcodeitem.click(function(){
-            //     var $this = $(this);
-            //     if($this.parent().data("executing")){
-            //         return;
-            //     }
-            //     $this.parent().data("executing",true);
-            //     var name = $this.parent().attr("reference");
-            //     showBarcodeView(name,function(){
-            //         //success
-            //         $this.parent().removeData("executing");
-            //     },function(err){
-            //         //fail
-            //         $this.parent().removeData("executing");
-            //         alert(err.message);
-            //     });
-            // });
             // barcodeitem.on("swipeleft",function(){
             //     //try delete
             //     var name = $(this).attr("reference");
@@ -198,7 +181,6 @@ function setNormalBrightness(){
 }
 
 function showBarcodeView(name,success,fail){
-    alert(name);
     getCode(name,function(code) {
         //Code Found
         var img = new Image();
