@@ -65,7 +65,7 @@ function loadDataset(){
             //add dists to codes
             var codearr = [];
             for(var name in codes){
-                code = codes[name];
+                code = Object.assign({},codes[name]);
                 if (code.locationName){
                     var dist = distanceBetween(location, {
                         lat:code.lat,
@@ -76,7 +76,7 @@ function loadDataset(){
                     code.distance = Infinity;
                 }
                 code.name = name;
-                codearr.append(code);
+                codearr.append(Object.assign({},code));
             }
             //sort codes
             alert(JSON.stringify(codearr));
