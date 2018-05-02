@@ -76,16 +76,16 @@ function loadDataset(){
                 }
             }
             //sort codes
-            codes.sort(function(a,b){
-                alert(a.distance + "," + b.distance);
-                if(a.distance < b.distance){
-                    return -1;
-                }else if(a.distance > b.distance){
-                    return 1;
-                }else{
-                    return 0;
-                }
-            });
+            // codes.sort(function(a,b){
+            //     alert(a.distance + "," + b.distance);
+            //     if(a.distance < b.distance){
+            //         return -1;
+            //     }else if(a.distance > b.distance){
+            //         return 1;
+            //     }else{
+            //         return 0;
+            //     }
+            // });
             //Successfully acquired code list
             for(var name in codes){//loop through each code
                 //get code by name
