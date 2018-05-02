@@ -62,7 +62,7 @@ function loadDataset(){
     codelist.empty();
     getCurrentLocation(function(location){
         codes = getAllCodes(function(codes){
-            //sort codes
+            //add dists to codes
             for(var name in codes){
                 code = codes[name];
                 if (code.locationName){
@@ -75,6 +75,16 @@ function loadDataset(){
                     code.distance = Infinity;
                 }
             }
+            //sort codes
+            codes.sort(function(a,b){
+                if(a.distance < b.distance){
+                    return -1;
+                }else if(a.distance > b.distance){
+                    return 1;
+                }else{
+                    return 0;
+                }
+            });
             //Successfully acquired code list
             for(var name in codes){//loop through each code
                 //get code by name
