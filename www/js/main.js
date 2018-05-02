@@ -239,6 +239,9 @@ function showEditView(name,success,fail){
         });
         img.onload = function(){
             $("#editviewtitle").text(name);
+            $("#editLocationName").text(code.locationName);
+            $("#editLocationLat").text(code.lat);
+            $("#editLocationLon").text(code.lon);
             $("#editviewimage").attr("src",img.src);
             $.mobile.navigate("#editview");
             success();
@@ -359,6 +362,26 @@ function initMap() {
     // });
 }
 
+function submitEditLocationForm(){
+    var name = $("#editviewtitle").text();
+    getCode(name,function(code) {
+        code.locationName = $("#editLocationName").val();
+        code.lat = $("#editLocationLat").val();
+        code.lon = $("#editLocationLon").val();
+        setCode(name,code,function(){
+            //Success
+            // alert("Code Added");
+            loadDataset();
+            $.mobile.navigate("#home");
+            $("#editLocationForm").trigger("reset");
+        },function(err){
+            //Fail
+            alert(err.message);
+        });
+    }, function(err){
+        alert(err.message);
+    });
+}
 
 function rotateImage(img){
     var canvas  = document.createElement("canvas");
