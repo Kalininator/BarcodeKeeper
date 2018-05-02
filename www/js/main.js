@@ -76,15 +76,6 @@ function loadDataset(){
                 }
 
             }
-            //sort codes
-            // alert(JSON.stringify(codes));
-            // codearr.sort(function(a,b){
-            //     if(parseInt(a.distance) < parseInt(b.distance)){
-            //         return -1;
-            //     }else {
-            //         return 1;
-            //     }
-            // });
             alert(JSON.stringify(codes));
             var names = Object.keys(codes);
             names.sort(function (a, b) {
@@ -92,9 +83,10 @@ function loadDataset(){
             });
             alert(JSON.stringify(names));
             //Successfully acquired code list
-            for(var name in names){//loop through each code
+            for(var i = 0; i < names.length; i ++){//loop through each code
                 //get code by name
-                var code = codes[name];
+                alert(names[i]);
+                var code = codes[names[i]];
                 //generate html
                 var text = "<li class='barcodeitem' reference='" + name + "'>";
                 text += "<a href='#'>";
