@@ -70,22 +70,20 @@ function loadDataset(){
                         lat:code.lat,
                         lon:code.lon
                     });
-                    code.distance = dist;
+                    code.distance = Math.round(dist);
                 }else{
                     code.distance = Infinity;
                 }
             }
             //sort codes
-            // codes.sort(function(a,b){
-            //     alert(a.distance + "," + b.distance);
-            //     if(a.distance < b.distance){
-            //         return -1;
-            //     }else if(a.distance > b.distance){
-            //         return 1;
-            //     }else{
-            //         return 0;
-            //     }
-            // });
+            alert(JSON.stringify(codes));
+            codes.sort(function(a,b){
+                if(parseInt(a.distance) < parseInt(b.distance)){
+                    return -1;
+                }else {
+                    return 1;
+                }
+            });
             //Successfully acquired code list
             for(var name in codes){//loop through each code
                 //get code by name
