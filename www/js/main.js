@@ -290,6 +290,7 @@ function initMap() {
             map.setCenter(place.geometry.location);
             map.setZoom(17);  // Why 17? Because it looks good.
         }
+        alert(place.geometry.location);
         marker.setPosition(place.geometry.location);
         marker.setVisible(true);
 
