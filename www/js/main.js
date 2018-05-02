@@ -312,6 +312,9 @@ function initMap() {
             //     lon:place.geometry.location.lng()
             // },position);
             // alert(dist);
+            $("#editLocationName").val(place.name);
+            $("#editLocationLat").val(place.geometry.location.lat());
+            $("#editLocationLon").val(place.geometry.location.lng());
             marker.setPosition(place.geometry.location);
             marker.setVisible(true);
             var address = '';
