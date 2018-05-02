@@ -77,7 +77,7 @@ function loadDataset(){
 
             }
             //sort codes
-            alert(JSON.stringify(codes));
+            // alert(JSON.stringify(codes));
             // codearr.sort(function(a,b){
             //     if(parseInt(a.distance) < parseInt(b.distance)){
             //         return -1;
@@ -85,6 +85,12 @@ function loadDataset(){
             //         return 1;
             //     }
             // });
+            alert(JSON.stringify(codes));
+            var names = Object.keys(codes);
+            names.sort(function (a, b) {
+                return codes[a].distance - codes[b].distance;
+            });
+            alert(JSON.stringify(names));
             //Successfully acquired code list
             for(var name in codes){//loop through each code
                 //get code by name
