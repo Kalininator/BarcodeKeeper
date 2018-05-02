@@ -77,13 +77,7 @@ function loadDataset(){
             }
             //sort codes
             codes.sort(function(a,b){
-                if(a.distance < b.distance){
-                    return -1;
-                }else if(a.distance > b.distance){
-                    return 1;
-                }else{
-                    return 0;
-                }
+                return a.distance - b.distance;
             });
             //Successfully acquired code list
             for(var name in codes){//loop through each code
@@ -162,7 +156,7 @@ function loadDataset(){
         });
         codelist.listview("refresh");
     },function(err){
-
+        alert(err);
     });
 
 
