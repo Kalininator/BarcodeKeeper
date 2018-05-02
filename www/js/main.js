@@ -87,7 +87,7 @@ function loadDataset(){
                         $this.parent().removeData("executing");
                         alert(err.message);
                     });
-                })
+                });
             });
             // barcodeitem.on("swipeleft",function(){
             //     //try delete
