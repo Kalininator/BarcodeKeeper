@@ -6,17 +6,11 @@
     <link rel="stylesheet" href="css/custom.css">
     <script type="text/javascript" src="cordova.js"></script>
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
-
 </head>
 <body>
 
 <div data-role="page" id="home" data-theme="b">
-    <!--<div data-role="header" data-position="fixed">-->
-        <!--<h1>Barcodes</h1>-->
-        <!--<a href="#addCode" data-icon="plus" class="ui-btn-right ui-btn-inline ui-corner-all"></a>-->
-    <!--</div>-->
     <div data-role="header" data-position="fixed">
-        <!--<a href="#" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-delete">Cancel</a>-->
         <h1>Barcodes</h1>
         <a href="#addCode" class="ui-btn-right ui-btn ui-btn-b ui-btn-inline ui-corner-all ui-btn-icon-right ui-icon-plus">Add</a>
     </div>
@@ -32,7 +26,6 @@
     <div data-role="header" data-position="fixed">
         <a href="#home" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-carat-l">Back</a>
         <h1>Add Code</h1>
-        <!--<button class="ui-btn-right ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-check">Save</button>-->
     </div>
     <div data-role="content">
         <button id="scanButton" data-icon="camera" onclick="scanBarcode()">
@@ -50,7 +43,6 @@
                    type="text"
                    name="data"
                    required="required">
-            <!--<label for="addCodeForm-type" class="select">Barcode Type:</label>-->
             <select name="addCodeForm-type" id="addCodeForm-type" data-native-menu="true" required="required">
                 <option value="" disabled selected>Barcode Type</option>
                 <option value="CODE128">CODE 128</option>
@@ -72,8 +64,6 @@
         <h1 id="editviewtitle">Edit</h1>
     </div>
     <div data-role="content">
-        <!--<img id="editviewimage" src="#">&lt;!&ndash;Placeholder for barcode&ndash;&gt;-->
-
         <div id="pac-container">
             <input id="pac-input" type="text"
                    placeholder="Search for a location">
@@ -104,7 +94,7 @@
                    required="required">
             <button type="submit" id="editLocationSave">Save Location</button>
         </form>
-        <button id="editViewDelete" onclick="deleteCodeOnClick()">Delete</button>
+        <button id="editViewDelete" data-theme="r" onclick="deleteCodeOnClick()">Delete</button>
     </div>
 
 </div>
