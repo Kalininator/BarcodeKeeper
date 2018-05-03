@@ -273,7 +273,8 @@ function showEditView(name,success,fail){
         $("#editLocationLon").val(code.lon);
 
         try {
-            map.setCenter({lat:code.lat, lng:code.lon});
+            map.setCenter({lat: code.lat, lng: code.lon});
+            new google.maps.Marker({position: {lat: code.lat, lng: code.lon}, map: map});
         }catch(e){
             alert(e);
         }
