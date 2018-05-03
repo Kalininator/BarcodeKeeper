@@ -182,8 +182,12 @@ function submitAddCodeForm(){
         //Success
         // alert("Code Added");
         loadDataset();
-        $.mobile.navigate("#home");
-        $("#addCodeForm").trigger("reset");
+        // $.mobile.navigate("#home");
+        showEditView(name,function(){
+            $("#addCodeForm").trigger("reset");
+        },function(err){
+            alert(err);
+        });
     },function(err){
         //Fail
         alert(err.message);
