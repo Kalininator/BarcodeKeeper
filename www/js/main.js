@@ -13,7 +13,7 @@ var codeDict = {
     "UPC_A":"upc",
     "ITF":"itf14"
 };
-
+var map;
 function setup() {
     initDb(function(){
         //success
@@ -271,6 +271,11 @@ function showEditView(name,success,fail){
         $("#editLocationName").val(code.locationName);
         $("#editLocationLat").val(code.lat);
         $("#editLocationLon").val(code.lon);
+
+        try {
+            map.setCenter({lat:code.lat, lng:code.lon});
+        }catch(e){}
+
         $.mobile.navigate("#editview");
         success();
         // var img = new Image();
@@ -325,7 +330,7 @@ function deg2rad(deg) {
 
 function initMap() {
     getCurrentLocation(function(position){
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: position.lat, lng: position.lon},
             zoom: 17
         });
