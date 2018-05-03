@@ -266,10 +266,8 @@ function showEditView(name,success,fail){
         $("#editLocationName").val(code.locationName);
         $("#editLocationLat").val(code.lat);
         $("#editLocationLon").val(code.lon);
-        alert("nav");
         $.mobile.navigate("#editview");
         success();
-
         // var img = new Image();
         // JsBarcode(img,code.code,{
         //     format:code.type,
