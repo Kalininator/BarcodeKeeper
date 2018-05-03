@@ -416,6 +416,7 @@ function submitEditLocationForm(){
             loadDataset();
             $.mobile.navigate("#home");
             $("#editLocationForm").trigger("reset");
+            $("#pac-input").val('');
         },function(err){
             //Fail
             alert(err.message);
