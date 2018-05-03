@@ -28,7 +28,6 @@ function setup() {
     StatusBar.backgroundColorByHexString("#000");
     statusBarVisible = StatusBar.isVisible;
     // StatusBar.hide();
-    google.maps.event.addDomListener(window, 'load', initialize);
     //set onclick for closing barcode fullscreen image
     $("#barcodeviewimage").click(function(){
         setNormalBrightness();
