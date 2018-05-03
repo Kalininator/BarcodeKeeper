@@ -18,6 +18,12 @@
     margin: auto;
 }
 
+.ui-btn-red {
+    background: #ab2525;
+    border: 1px solid #711414;
+    color: white;
+}
+
 #map {
     height: 300px;
 }
