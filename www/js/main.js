@@ -274,7 +274,9 @@ function showEditView(name,success,fail){
 
         try {
             map.setCenter({lat:code.lat, lng:code.lon});
-        }catch(e){}
+        }catch(e){
+            alert(e);
+        }
 
         $.mobile.navigate("#editview");
         success();
