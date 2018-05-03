@@ -94,7 +94,9 @@ function loadDataset(){
                 text += "<h1>" + name + "</h1>";
                 text += "<p>Code: " + code.code + "</p>";
                 text += "<p>Type: " + code.type + "</p>";
-                text += "<p>Dist: " + code.distance + "</p>";
+                if(code.distance != Infinity){
+                    text += "<p>Distance: " + code.distance + "m</p>";
+                }
                 text += "</a><a href='#' data-icon='gear'></a>";
                 text += "</li>";
                 //add code to <ul>
