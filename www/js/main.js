@@ -271,14 +271,6 @@ function showEditView(name,success,fail){
         $("#editLocationName").val(code.locationName);
         $("#editLocationLat").val(code.lat);
         $("#editLocationLon").val(code.lon);
-
-        try {
-            map.setCenter({lat: code.lat, lng: code.lon});
-            new google.maps.Marker({position: {lat: code.lat, lng: code.lon}, map: map});
-        }catch(e){
-            alert(e);
-        }
-
         $.mobile.navigate("#editview");
         success();
         // var img = new Image();
